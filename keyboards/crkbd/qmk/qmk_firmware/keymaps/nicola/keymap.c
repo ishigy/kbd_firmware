@@ -1,8 +1,59 @@
 #include QMK_KEYBOARD_H
 
 
+// NICOLA親指シフト
+#include "nicola.h"
+NGKEYS nicola_keys;
+// NICOLA親指シフト
+
+// Each layer gets a name for readability, which is then used in the keymap matrix below.
+// The underscores don't mean anything - you can have a layer called STUFF or any other name.
+// Layer names don't all need to be of the same length, obviously, and you can also skip them
+// entirely and just use numbers.
+enum keymap_layers {
+  _QWERTY,
+// NICOLA親指シフト
+  _NICOLA, // NICOLA親指シフト入力レイヤー
+// NICOLA親指シフト
+  _LOWER,
+  _RAISE,
+  _ADJUST,
+};
+
+enum custom_keycodes {
+  KC_QWERTY = NG_SAFE_RANGE,
+  KC_EISU,
+  KC_LOWER,
+  KC_RAISE,
+  KC_ADJUST,
+  KC_BACKLIT,
+  KC_KANA2,
+  RGBRST
+};
+
+#define KC______ KC_TRNS
+#define KC_XXXXX KC_NO
+#define _____ KC_TRNS
+#define XXXXX KC_NO
+#define KC_RST   RESET
+#define KC_CTLTB CTL_T(KC_TAB)
+#define KC_GUITB GUI_T(KC_TAB)
+#define KC_RESET RESET
+#define KC_ABLS LALT(KC_BSLS)
+#define KC_CMDENT  CMD_T(KC_ENT)
+#define KC_SFTSPC  LSFT_T(KC_SPC)
+#define KC_CTLSPC  CTL_T(KC_SPC)
+#define KC_ALTSPC  ALT_T(KC_SPC)
+#define KC_CTLBS   CTL_T(KC_BSPC)
+#define KC_CTLENT  CTL_T(KC_ENT)
+
+#define KC_C(A) C(KC_##A)
+#define KC_S(A) S(KC_##A)
+#define KC_G(A) G(KC_##A)
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [0] = LAYOUT_split_3x6_3_ex2(
+  [_QWERTY] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
        KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T, KC_LCTL,    KC_RCTL,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
