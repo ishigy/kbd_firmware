@@ -4,6 +4,7 @@
     "url": "https://github.com/foostan/crkbd",
     "usb": {
         "vid": "0x4653",
+        "suspend_wakeup_delay": 200,
         "device_version": "4.0.0"
     },
     "processor": "RP2040",
@@ -18,10 +19,10 @@
         "mousekey": true,
         "encoder": true
     },
-    "build": {
-        "lto": true
-    },
     "diode_direction": "COL2ROW",
+    "dynamic_keymap": {
+        "layer_count": 6
+    },
     "matrix_pins": {
         "direct":[
             ["GP22", "GP20", "GP23", "GP26", "GP29",  "GP0",  "GP4"],
@@ -45,6 +46,9 @@
         "bootmagic": {
             "matrix": [ 4, 1 ]
         },
+        "handedness": {
+            "pin": "GP21"
+        },
         "matrix_pins": {
             "right": {
                 "direct": [
@@ -62,6 +66,9 @@
                     {"pin_a":  "GP6", "pin_b":  "GP7"}
                 ]
             }
+        },
+        "serial": {
+            "driver": "vendor"
         },
         "transport": {
             "sync": {
@@ -354,6 +361,7 @@
             "multisplash": true,
             "solid_splash": true,
             "solid_multisplash": true
-        }
+        },
+        "sleep": true
     }
 }
