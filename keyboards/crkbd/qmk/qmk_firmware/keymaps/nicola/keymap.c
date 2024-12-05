@@ -37,15 +37,9 @@ enum custom_keycodes {
 #define XXXXX KC_NO
 #define KC_RST   RESET
 #define KC_CTLTB CTL_T(KC_TAB)
-#define KC_GUITB GUI_T(KC_TAB)
+#define KC_GUIUP GUI_T(KC_UP)
 #define KC_RESET RESET
-#define KC_ABLS LALT(KC_BSLS)
-#define KC_CMDENT  CMD_T(KC_ENT)
-#define KC_SFTSPC  LSFT_T(KC_SPC)
-#define KC_CTLSPC  CTL_T(KC_SPC)
-#define KC_ALTSPC  ALT_T(KC_SPC)
-#define KC_CTLBS   CTL_T(KC_BSPC)
-#define KC_CTLENT  CTL_T(KC_ENT)
+#define KC_ALTDN RALT(KC_DOWN)
 
 #define KC_C(A) C(KC_##A)
 #define KC_S(A) S(KC_##A)
@@ -57,11 +51,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
        KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T, KC_LPRN,    KC_RPRN,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
- MT(KC_LCTL,KC_TAB), KC_A, KC_S,    KC_D,    KC_F,    KC_G, KC_LEFT,   KC_RIGHT,    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_COLN,
+     KC_CTLTB,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_LEFT,   KC_RIGHT,    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_COLN,
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, MT(KC_RSFT,KC_BSLS),
   //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
-                    MT(KC_LGUI, KC_UP), LT(_LOWER,KC_EISU), KC_PENT,     KC_SPC, LT(_RAISE,KC_KANA2), MT(KC_RALT, KC_DOWN)
+                              KC_GUIUP, LT(_LOWER,KC_EISU), KC_PENT,     KC_SPC, LT(_RAISE,KC_KANA2), KC_ALTDN
                               //`----------------------------------'  `------------------------------------'
 
   ),

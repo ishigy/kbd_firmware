@@ -276,7 +276,7 @@ void nicola_om_type(void) {
             case NG_COLN : tap_code16(S(KC_RBRC)); break;
            // case NG_RBRC : tap_code16(S(KC_NUHS)); break;
 
-            case NG_Z   :                    break;
+            case NG_Z   : tap_code16(S(KC_EQL)); break; // ~
             case NG_X   : send_string("bi"); break;
             case NG_C   : send_string("zu"); break;
             case NG_V   : send_string("bu"); break;
