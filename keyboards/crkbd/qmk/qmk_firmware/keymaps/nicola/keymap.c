@@ -55,11 +55,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, MT(KC_RSFT,KC_MINS),
   //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
-                              KC_GUIUP, LT(_LOWER,KC_EISU), KC_PENT,     KC_SPC, LT(_RAISE,KC_KANA2), KC_ALTDN
+                              KC_GUIUP, MT(KC_LOWER,KC_EISU), KC_PENT,     KC_SPC, MT(KC_RAISE,KC_KANA2), KC_ALTDN
                               //`----------------------------------'  `------------------------------------'
 
   ),
-
+  
 // NICOLA親指シフト
   // デフォルトレイヤーに関係なくQWERTYで
   [_NICOLA] = LAYOUT_split_3x6_3_ex2(
@@ -133,7 +133,6 @@ void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
-    
       switch (keycode) {
         case KC_EISU:
         if (record->event.pressed) {
@@ -151,6 +150,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
             return false;
             break;
+        case KC_LOWER:
+        if (record->event.pressed) {
+          layer_on(_LOWER);
+            } else {
+          layer_off(_LOWER);
+        }
+        update_tri_layer(_LOWER, _RAISE, _ADJUST);
+          return false;
+          break;
+        case KC_RAISE:
+        if (record->event.pressed) {
+          layer_on(_RAISE);
+           } else {
+          layer_off(_RAISE);
+        }
+        update_tri_layer(_LOWER, _RAISE, _ADJUST);
+          return false;
+          break;
        // case KC_XXX:
        // if (record->event.pressed) {
        //     // マクロで入力
