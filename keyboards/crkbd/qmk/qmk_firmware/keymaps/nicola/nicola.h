@@ -34,6 +34,8 @@ typedef enum nicola_keycodes {
   NG_3,
   NG_4,
   NG_5,
+  NG_LU,
+  NG_RU,
  //  NG_6,
  //  NG_7,
  //  NG_8,

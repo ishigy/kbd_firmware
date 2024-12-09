@@ -1,3 +1,4 @@
+
 /* Copyright 2018-2019 eswai <@eswai>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -140,6 +141,8 @@ void nicola_m_type(void) {
         case NG_E   : send_string("ta"); break;
         case NG_R   : send_string("ko"); break;
         case NG_T   : send_string("sa"); break;
+        case NG_LU  : tap_code(KC_RBRC); break; // [
+        case NG_RU  : tap_code(KC_NUHS); break; // ]
         case NG_Y   : send_string("ra"); break;
         case NG_U   : send_string("ti"); break;
         case NG_I   : send_string("ku"); break;
@@ -203,6 +206,8 @@ void nicola_om_type(void) {
             case NG_E   : send_string("ri"); break;
             case NG_R   : send_string("lya");break;
             case NG_T   : send_string("re"); break;
+            case NG_LU  : tap_code16(S(KC_8)); break; // (
+            case NG_RU  : tap_code16(S(KC_7)); break; // '
             case NG_Y   : send_string("pa"); break;
             case NG_U   : send_string("di"); break;
             case NG_I   : send_string("gu"); break;
@@ -255,6 +260,8 @@ void nicola_om_type(void) {
             case NG_E   : send_string("da"); break;
             case NG_R   : send_string("go"); break;
             case NG_T   : send_string("za"); break;
+            case NG_LU  : tap_code16(S(KC_QUOT)); break; // "
+            case NG_RU  : tap_code16(S(KC_9)); break; // )
             case NG_Y   : send_string("yo"); break;
             case NG_U   : send_string("ni"); break;
             case NG_I   : send_string("ru"); break;

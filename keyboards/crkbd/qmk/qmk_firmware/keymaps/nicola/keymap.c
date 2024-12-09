@@ -51,9 +51,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
        KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T, KC_LPRN,    KC_RPRN,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-     KC_CTLTB,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_LEFT,   KC_RIGHT,    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_COLN,
+     KC_CTLTB,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_LEFT,   KC_RIGHT,    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
-      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, MT(KC_RSFT,KC_BSLS),
+      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, MT(KC_RSFT,KC_MINS),
   //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
                               KC_GUIUP, LT(_LOWER,KC_EISU), KC_PENT,     KC_SPC, LT(_RAISE,KC_KANA2), KC_ALTDN
                               //`----------------------------------'  `------------------------------------'
@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // デフォルトレイヤーに関係なくQWERTYで
   [_NICOLA] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-        _____,    NG_Q,    NG_W,    NG_E,    NG_R,    NG_T, NG_LBRC,    NG_RBRC,    NG_Y,    NG_U,    NG_I,    NG_O,    NG_P,  KC_DEL,
+        _____,    NG_Q,    NG_W,    NG_E,    NG_R,    NG_T,   NG_LU,      NG_RU,    NG_Y,    NG_U,    NG_I,    NG_O,    NG_P,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
         _____,    NG_A,    NG_S,    NG_D,    NG_F,    NG_G,   _____,      _____,    NG_H,    NG_J,    NG_K,    NG_L, NG_SCLN, NG_COLN,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -116,7 +116,65 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 
+void matrix_init_user(void) {
+  // NICOLA親指シフト
+  set_nicola(_NICOLA);
+  // NICOLA親指シフト
+}
 
+// Setting ADJUST layer RGB back to default
+void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
+  if (IS_LAYER_ON(layer1) && IS_LAYER_ON(layer2)) {
+    layer_on(layer3);
+  } else {
+    layer_off(layer3);
+  }
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+    
+      switch (keycode) {
+        case KC_EISU:
+        if (record->event.pressed) {
+            // NICOLA親指シフト
+            nicola_off();
+            // NICOLA親指シフト
+        }
+            return false;
+            break;
+        case KC_KANA2:
+        if (record->event.pressed) {
+            // NICOLA親指シフト
+            nicola_on();
+            // NICOLA親指シフト
+        }
+            return false;
+            break;
+       // case KC_XXX:
+       // if (record->event.pressed) {
+       //     // マクロで入力
+       //     user_macro();
+
+       // }
+       //     return false;
+       //     break;
+
+
+      }
+    
+
+  // NICOLA親指シフト
+  bool a = true;
+  if (nicola_state()) {
+    nicola_mode(keycode, record);
+    a = process_nicola(keycode, record);
+  }
+  if (a == false) return false;
+  // NICOLA親指シフト
+
+    return true;
+}
 
 #ifdef ENCODER_MAP_ENABLE
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
