@@ -26,7 +26,6 @@ enum custom_keycodes {
   KC_LOWER,
   KC_RAISE,
   KC_ADJUST,
-  KC_BACKLIT,
   KC_KANA2,
   RGBRST
 };
