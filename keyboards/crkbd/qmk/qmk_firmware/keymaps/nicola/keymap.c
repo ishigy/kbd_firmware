@@ -168,14 +168,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
           return false;
           break;
-       // case KC_XXX:
-       // if (record->event.pressed) {
-       //     // マクロで入力
-       //     user_macro();
+        case KC_XXX:
+        if (record->event.pressed) {
+            // マクロで入力
+            user_macro();
 
-       // }
-       //     return false;
-       //     break;
+        }
+            return false;
+            break;
 
 
       }
