@@ -150,6 +150,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
             return false;
             break;
+        case KC_ADJUST:
+        if (record->event.pressed) {
+           layer_on(_ADJUST);
+        } else {
+           layer_off(_ADJUST);
+        }
+        return false;
+        break;
         case KC_LOWER:
         if (record->event.pressed) {
           layer_on(_LOWER);
