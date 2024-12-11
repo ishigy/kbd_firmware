@@ -27,6 +27,7 @@ enum custom_keycodes {
   KC_RAISE,
   KC_ADJUST,
   KC_KANA2,
+  KC_MACRO,
   RGBRST
 };
 
@@ -81,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
         _____,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5, KC_LPRN,    KC_RPRN,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-        _____,    KC_4,    KC_5,    KC_6, XXXXXXX,   KC_UP,   _____,      _____,   KC_AT,    KC_4,    KC_5,    KC_6, KC_ASTR, KC_PLUS,
+        _____,    KC_4,    KC_5,    KC_6,KC_MACRO,   KC_UP,   _____,      _____,   KC_AT,    KC_4,    KC_5,    KC_6, KC_ASTR, KC_PLUS,
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
         _____,    KC_7,    KC_8,    KC_9,    KC_0, KC_DOWN,                         KC_0,    KC_1,    KC_2,    KC_3, KC_SLSH, KC_MINS,
 
@@ -175,7 +176,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
           return false;
           break;
-        case KC_XXX:
+        case KC_MACRO:
         if (record->event.pressed) {
             // マクロで入力
             user_macro();
