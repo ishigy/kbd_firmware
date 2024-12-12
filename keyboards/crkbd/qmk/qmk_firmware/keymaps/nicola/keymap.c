@@ -37,7 +37,7 @@ enum custom_keycodes {
 #define XXXXX KC_NO
 #define KC_RST   RESET
 #define KC_CTLTB CTL_T(KC_TAB)
-#define KC_SFMN SFT_T(KC_MINS)
+#define KC_SFMN SFT_T(KC_RO)
 #define KC_GUIUP GUI_T(KC_UP)
 #define KC_RESET RESET
 #define KC_ALTDN RALT(KC_DOWN)
