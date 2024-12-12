@@ -133,6 +133,9 @@ void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
   }
 }
 
+static bool lower_pressed = false; 
+static bool raise_pressed = false; 
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
       switch (keycode) {
@@ -162,22 +165,36 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         break;
         case KC_LOWER:
         if (record->event.pressed) {
+          lower_pressed = true;
           layer_on(_LOWER);
-            } else {
-          layer_off(_LOWER);
+          update_tri_layer(_LOWER, _RAISE, _ADJUST);
+        } else {
+            layer_off(_LOWER);
+            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+        if (lower_pressed) {
+            tap_code(KC_KANA2);
+          }
+          lower_pressed = false;
         }
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-          return false;
-          break;
+        return false;
+        break;
+        
         case KC_RAISE:
         if (record->event.pressed) {
+          raise_pressed = true;
           layer_on(_RAISE);
-           } else {
-          layer_off(_RAISE);
+          update_tri_layer(_LOWER, _RAISE, _ADJUST);
+        } else {
+            layer_off(_RAISE);
+            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+        if (raise_pressed) {
+            tap_code(KC_EISU);
+          }
+          raise_pressed = false;
         }
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-          return false;
-          break;
+        return false;
+        break;
+        
         case KC_MACRO:
         if (record->event.pressed) {
             // マクロで入力
@@ -186,7 +203,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
             return false;
             break;
-
+        
+        default: // (3)
+        if (record->event.pressed) {
+            // reset the flag
+            lower_pressed = false;
+            raise_pressed = false; 
+        }
+      break;
 
       }
     
