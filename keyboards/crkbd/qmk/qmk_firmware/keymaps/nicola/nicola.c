@@ -59,7 +59,7 @@ void keypress_timer_expired(void);
 void user_macro(void) {
 //  tap_code(KC_LNG2); // Mac
   tap_code(KC_INT5); // Win
-  send_string("767650");
+  send_string("xxxxxx");
   tap_code(KC_KP_ENTER);
 }
 
