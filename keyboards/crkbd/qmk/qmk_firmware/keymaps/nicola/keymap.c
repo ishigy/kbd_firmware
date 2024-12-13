@@ -137,6 +137,7 @@ void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3)
   }
 }
 
+// レイヤーキータップ、長押し判定
 static bool lower_pressed = false;
 static bool raise_pressed = false;
 
@@ -163,6 +164,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     }
     return false;
     break;
+    
   case KC_ADJUST:
     if (record->event.pressed)
     {
@@ -174,6 +176,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     }
     return false;
     break;
+    
   case KC_LOWER:
     if (record->event.pressed)
     {
@@ -187,7 +190,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
       update_tri_layer(_LOWER, _RAISE, _ADJUST);
       if (lower_pressed)
       {
-        tap_code(KC_KANA2);
+        nicola_off();
       }
       lower_pressed = false;
     }
@@ -207,7 +210,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
       update_tri_layer(_LOWER, _RAISE, _ADJUST);
       if (raise_pressed)
       {
-        tap_code(KC_EISU);
+        nicola_on();
       }
       raise_pressed = false;
     }
@@ -223,7 +226,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     return false;
     break;
 
-  default: // (3)
+  default:
     if (record->event.pressed)
     {
       // reset the flag
