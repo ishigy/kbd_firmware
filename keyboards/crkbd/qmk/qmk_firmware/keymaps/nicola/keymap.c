@@ -217,10 +217,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     if (record->event.pressed)
     {
       // マクロで入力
-      //  tap_code(KC_LNG2); // Mac
       tap_code(KC_INT5); // Win
       send_string("xxxxxx");
-      tap_code(KC_KP_ENTER);
     }
     return false;
     break;
