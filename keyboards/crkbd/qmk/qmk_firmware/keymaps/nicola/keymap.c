@@ -17,7 +17,7 @@ enum keymap_layers
   // NICOLA親指シフト
   _LOWER,
   _RAISE,
-  _ADJUST,
+  _ADJUST
 };
 
 enum custom_keycodes
@@ -28,7 +28,7 @@ enum custom_keycodes
   KC_RAISE,
   KC_ADJUST,
   KC_KANA2,
-  KC_MACRO,
+  KC_MACRO
 //  RGBRST,
 };
 
