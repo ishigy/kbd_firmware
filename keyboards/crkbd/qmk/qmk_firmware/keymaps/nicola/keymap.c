@@ -43,10 +43,6 @@ enum custom_keycodes
 #define KC_RESET RESET
 #define KC_ALTDN RALT(KC_DOWN)
 
-#define KC_C(A) C(KC_##A)
-#define KC_S(A) S(KC_##A)
-#define KC_G(A) G(KC_##A)
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
