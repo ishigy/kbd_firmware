@@ -29,7 +29,7 @@ enum custom_keycodes
   KC_ADJUST,
   KC_KANA2,
   KC_MACRO,
-  RGBRST
+//  RGBRST,
 };
 
 #define KC______ KC_TRNS
