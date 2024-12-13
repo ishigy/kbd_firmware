@@ -28,7 +28,7 @@ enum custom_keycodes
   KC_RAISE,
   KC_ADJUST,
   KC_KANA2,
-  KC_MACRO
+  KC_MACRO,
 //  RGBRST,
 };
 
