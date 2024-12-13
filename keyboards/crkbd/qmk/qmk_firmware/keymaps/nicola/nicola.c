@@ -107,6 +107,10 @@ void nicola_mode(uint16_t keycode, keyrecord_t *record) {
     case KC_RSFT:
     case KC_RALT:
     case KC_RGUI:
+    case KC_CTLTB:
+  //  case KC_SFMN:
+    case KC_GUIUP:
+    case KC_ALTDN:
       if (record->event.pressed) {
         n_modifier++;
         layer_off(nicola_layer);
