@@ -36,12 +36,12 @@ enum custom_keycodes
 #define KC_XXXXX KC_NO
 #define _____ KC_TRNS
 #define XXXXX KC_NO
-#define KC_RST RESET
-#define KC_CTLTB CTL_T(KC_TAB)
-#define KC_SFMN SFT_T(KC_MINS)
-#define KC_GUIUP GUI_T(KC_UP)
 #define KC_RESET RESET
+#define KC_RST RESET
 #define KC_ALTDN RALT(KC_DOWN)
+#define KC_CTLTB CTL_T(KC_TAB)
+#define KC_GUIUP GUI_T(KC_UP)
+#define KC_SFMN SFT_T(KC_MINS)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT_split_3x6_3_ex2(
