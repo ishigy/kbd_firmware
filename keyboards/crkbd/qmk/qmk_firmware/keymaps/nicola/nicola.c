@@ -55,15 +55,6 @@ void keypress_timer_expired(void);
 #define IF_TIMEOUT(x) if(x)
 #endif
 
-// ユーザマクロ
-void user_macro(void) {
-//  tap_code(KC_LNG2); // Mac
-  tap_code(KC_INT5); // Win
-  send_string("xxxxxx");
-  tap_code(KC_KP_ENTER);
-}
-
-
 // 親指シフトのレイヤー、シフトキーを設定
 void set_nicola(uint8_t layer) {
   nicola_layer = layer;
