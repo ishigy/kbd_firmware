@@ -1,6 +1,5 @@
 #include QMK_KEYBOARD_H
 
-
 // NICOLA親指シフト
 #include "nicola.h"
 NGKEYS nicola_keys;
@@ -10,17 +9,19 @@ NGKEYS nicola_keys;
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
-enum keymap_layers {
+enum keymap_layers
+{
   _QWERTY,
-// NICOLA親指シフト
+  // NICOLA親指シフト
   _NICOLA, // NICOLA親指シフト入力レイヤー
-// NICOLA親指シフト
+  // NICOLA親指シフト
   _LOWER,
   _RAISE,
   _ADJUST,
 };
 
-enum custom_keycodes {
+enum custom_keycodes
+{
   KC_QWERTY = NG_SAFE_RANGE,
   KC_EISU,
   KC_LOWER,
@@ -35,7 +36,7 @@ enum custom_keycodes {
 #define KC_XXXXX KC_NO
 #define _____ KC_TRNS
 #define XXXXX KC_NO
-#define KC_RST   RESET
+#define KC_RST RESET
 #define KC_CTLTB CTL_T(KC_TAB)
 #define KC_SFMN SFT_T(KC_MINS)
 #define KC_GUIUP GUI_T(KC_UP)
@@ -45,7 +46,6 @@ enum custom_keycodes {
 #define KC_C(A) C(KC_##A)
 #define KC_S(A) S(KC_##A)
 #define KC_G(A) G(KC_##A)
-
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT_split_3x6_3_ex2(
@@ -118,120 +118,161 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 
-void matrix_init_user(void) {
+void matrix_init_user(void)
+{
   // NICOLA親指シフト
   set_nicola(_NICOLA);
   // NICOLA親指シフト
 }
 
 // Setting ADJUST layer RGB back to default
-void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
-  if (IS_LAYER_ON(layer1) && IS_LAYER_ON(layer2)) {
+void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3)
+{
+  if (IS_LAYER_ON(layer1) && IS_LAYER_ON(layer2))
+  {
     layer_on(layer3);
-  } else {
+  }
+  else
+  {
     layer_off(layer3);
   }
 }
 
-static bool lower_pressed = false; 
-static bool raise_pressed = false; 
+static bool lower_pressed = false;
+static bool raise_pressed = false;
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+bool process_record_user(uint16_t keycode, keyrecord_t *record)
+{
 
-      switch (keycode) {
-        case KC_EISU:
-        if (record->event.pressed) {
-            // NICOLA親指シフト
-            nicola_off();
-            // NICOLA親指シフト
-        }
-            return false;
-            break;
-        case KC_KANA2:
-        if (record->event.pressed) {
-            // NICOLA親指シフト
-            nicola_on();
-            // NICOLA親指シフト
-        }
-            return false;
-            break;
-        case KC_ADJUST:
-        if (record->event.pressed) {
-           layer_on(_ADJUST);
-        } else {
-           layer_off(_ADJUST);
-        }
-        return false;
-        break;
-        case KC_LOWER:
-        if (record->event.pressed) {
-          lower_pressed = true;
-          layer_on(_LOWER);
-          update_tri_layer(_LOWER, _RAISE, _ADJUST);
-        } else {
-            layer_off(_LOWER);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
-        if (lower_pressed) {
-            tap_code(KC_KANA2);
-          }
-          lower_pressed = false;
-        }
-        return false;
-        break;
-        
-        case KC_RAISE:
-        if (record->event.pressed) {
-          raise_pressed = true;
-          layer_on(_RAISE);
-          update_tri_layer(_LOWER, _RAISE, _ADJUST);
-        } else {
-            layer_off(_RAISE);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
-        if (raise_pressed) {
-            tap_code(KC_EISU);
-          }
-          raise_pressed = false;
-        }
-        return false;
-        break;
-        
-        case KC_MACRO:
-        if (record->event.pressed) {
-            // マクロで入力
-            user_macro();
-
-        }
-            return false;
-            break;
-        
-        default: // (3)
-        if (record->event.pressed) {
-            // reset the flag
-            lower_pressed = false;
-            raise_pressed = false; 
-        }
-      break;
-
+  switch (keycode)
+  {
+  case KC_EISU:
+    if (record->event.pressed)
+    {
+      // NICOLA親指シフト
+      nicola_off();
+      // NICOLA親指シフト
+    }
+    return false;
+    break;
+  case KC_KANA2:
+    if (record->event.pressed)
+    {
+      // NICOLA親指シフト
+      nicola_on();
+      // NICOLA親指シフト
+    }
+    return false;
+    break;
+  case KC_ADJUST:
+    if (record->event.pressed)
+    {
+      layer_on(_ADJUST);
+    }
+    else
+    {
+      layer_off(_ADJUST);
+    }
+    return false;
+    break;
+  case KC_LOWER:
+    if (record->event.pressed)
+    {
+      lower_pressed = true;
+      layer_on(_LOWER);
+      update_tri_layer(_LOWER, _RAISE, _ADJUST);
+    }
+    else
+    {
+      layer_off(_LOWER);
+      update_tri_layer(_LOWER, _RAISE, _ADJUST);
+      if (lower_pressed)
+      {
+        tap_code(KC_KANA2);
       }
-    
+      lower_pressed = false;
+    }
+    return false;
+    break;
+
+  case KC_RAISE:
+    if (record->event.pressed)
+    {
+      raise_pressed = true;
+      layer_on(_RAISE);
+      update_tri_layer(_LOWER, _RAISE, _ADJUST);
+    }
+    else
+    {
+      layer_off(_RAISE);
+      update_tri_layer(_LOWER, _RAISE, _ADJUST);
+      if (raise_pressed)
+      {
+        tap_code(KC_EISU);
+      }
+      raise_pressed = false;
+    }
+    return false;
+    break;
+
+  case KC_MACRO:
+    if (record->event.pressed)
+    {
+      // マクロで入力
+      user_macro();
+    }
+    return false;
+    break;
+
+  default: // (3)
+    if (record->event.pressed)
+    {
+      // reset the flag
+      lower_pressed = false;
+      raise_pressed = false;
+    }
+    break;
+  }
 
   // NICOLA親指シフト
   bool a = true;
-  if (nicola_state()) {
+  if (nicola_state())
+  {
     nicola_mode(keycode, record);
     a = process_nicola(keycode, record);
   }
-  if (a == false) return false;
+  if (a == false)
+    return false;
   // NICOLA親指シフト
 
-    return true;
+  return true;
 }
 
 #ifdef ENCODER_MAP_ENABLE
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-  [0] = { ENCODER_CCW_CW(RGB_MOD, RGB_RMOD), ENCODER_CCW_CW(RGB_HUI, RGB_HUD), ENCODER_CCW_CW(RGB_VAI, RGB_VAD), ENCODER_CCW_CW(RGB_SAI, RGB_SAD), },
-  [1] = { ENCODER_CCW_CW(RGB_MOD, RGB_RMOD), ENCODER_CCW_CW(RGB_HUI, RGB_HUD), ENCODER_CCW_CW(RGB_VAI, RGB_VAD), ENCODER_CCW_CW(RGB_SAI, RGB_SAD), },
-  [2] = { ENCODER_CCW_CW(RGB_MOD, RGB_RMOD), ENCODER_CCW_CW(RGB_HUI, RGB_HUD), ENCODER_CCW_CW(RGB_VAI, RGB_VAD), ENCODER_CCW_CW(RGB_SAI, RGB_SAD), },
-  [3] = { ENCODER_CCW_CW(RGB_MOD, RGB_RMOD), ENCODER_CCW_CW(RGB_HUI, RGB_HUD), ENCODER_CCW_CW(RGB_VAI, RGB_VAD), ENCODER_CCW_CW(RGB_SAI, RGB_SAD), },
+    [0] = {
+        ENCODER_CCW_CW(RGB_MOD, RGB_RMOD),
+        ENCODER_CCW_CW(RGB_HUI, RGB_HUD),
+        ENCODER_CCW_CW(RGB_VAI, RGB_VAD),
+        ENCODER_CCW_CW(RGB_SAI, RGB_SAD),
+    },
+    [1] = {
+        ENCODER_CCW_CW(RGB_MOD, RGB_RMOD),
+        ENCODER_CCW_CW(RGB_HUI, RGB_HUD),
+        ENCODER_CCW_CW(RGB_VAI, RGB_VAD),
+        ENCODER_CCW_CW(RGB_SAI, RGB_SAD),
+    },
+    [2] = {
+        ENCODER_CCW_CW(RGB_MOD, RGB_RMOD),
+        ENCODER_CCW_CW(RGB_HUI, RGB_HUD),
+        ENCODER_CCW_CW(RGB_VAI, RGB_VAD),
+        ENCODER_CCW_CW(RGB_SAI, RGB_SAD),
+    },
+    [3] = {
+        ENCODER_CCW_CW(RGB_MOD, RGB_RMOD),
+        ENCODER_CCW_CW(RGB_HUI, RGB_HUD),
+        ENCODER_CCW_CW(RGB_VAI, RGB_VAD),
+        ENCODER_CCW_CW(RGB_SAI, RGB_SAD),
+    },
 };
 #endif
