@@ -32,6 +32,10 @@ enum custom_keycodes
 //  RGBRST,
 };
 
+// レイヤーキータップ、長押し判定
+static bool lower_pressed = false;
+static bool raise_pressed = false;
+
 #define KC______ KC_TRNS
 #define KC_XXXXX KC_NO
 #define _____ KC_TRNS
@@ -132,10 +136,6 @@ void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3)
     layer_off(layer3);
   }
 }
-
-// レイヤーキータップ、長押し判定
-static bool lower_pressed = false;
-static bool raise_pressed = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record)
 {

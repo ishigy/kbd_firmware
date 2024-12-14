@@ -124,18 +124,6 @@ void nicola_mode(uint16_t keycode, keyrecord_t *record) {
 // 一部の記号を入力するために訂正を入れている。
 void nicola_m_type(void) {
     switch(nicola_m_key) {
-       // case NG_1   : send_string("1" ); break;
-       // case NG_2   : send_string("2" ); break;
-       // case NG_3   : send_string("3" ); break;
-       // case NG_4   : send_string("4" ); break;
-       // case NG_5   : send_string("5" ); break;
-       // case NG_6   : send_string("6" ); break;
-       // case NG_7   : send_string("7" ); break;
-       // case NG_8   : send_string("8" ); break;
-       // case NG_9   : send_string("9" ); break;
-       // case NG_0   : send_string("0" ); break;
-       // case NG_MINS   : send_string("-" ); break;
-
         case NG_Q   : send_string("." ); break;
         case NG_W   : send_string("ka"); break;
         case NG_E   : send_string("ta"); break;
@@ -148,8 +136,6 @@ void nicola_m_type(void) {
         case NG_I   : send_string("ku"); break;
         case NG_O   : send_string("tu"); break;
         case NG_P   : send_string("," ); break;
-       // case NG_AT  : send_string("," ); break;
-       // case NG_LBRC: tap_code(KC_RBRC); break; // [
 
         case NG_A   : send_string("u" ); break;
         case NG_S   : send_string("si"); break;
@@ -162,9 +148,8 @@ void nicola_m_type(void) {
         case NG_L   : send_string("i" ); break;
         case NG_SCLN : send_string("nn"); break;
         case NG_COLN : tap_code(KC_BSPC); break;
-       // case NG_RBRC : tap_code(KC_NUHS); break; // ]
 
-        case NG_Z   : tap_code16(KC_EXLM); break; // 
+        case NG_Z   : tap_code16(KC_EXLM); break; // !
         case NG_X   : send_string("hi"); break;
         case NG_C   : send_string("su"); break;
         case NG_V   : send_string("hu"); break;
@@ -173,7 +158,7 @@ void nicola_m_type(void) {
         case NG_M   : send_string("so"); break;
         case NG_COMM: send_string("ne"); break;
         case NG_DOT : send_string("ho"); break;
-        case NG_SLSH: tap_code16(KC_QUES); break; // 
+        case NG_SLSH: tap_code16(KC_QUES); break; // ?
     }
 }
 
@@ -189,18 +174,6 @@ void nicola_o_type(void) {
 void nicola_om_type(void) {
     if(nicola_o_key == NG_SHFTL) {
         switch(nicola_m_key) {
-           // case NG_1   : send_string("?" ); break;
-           // case NG_2   : tap_code(KC_SLSH); break;
-           // case NG_3   : tap_code16(S(KC_EQL)); break; // ~
-           // case NG_4   : tap_code(KC_RBRC); break; // [
-           // case NG_5   : tap_code(KC_NUHS); break; // ]
-           // case NG_6   : tap_code16(S(KC_6)); break; // &
-           // case NG_7   : tap_code16(S(KC_7)); break; // '
-           // case NG_8   : tap_code16(S(KC_8)); break; // (
-           // case NG_9   : tap_code16(S(KC_9)); break; // )
-           // case NG_0   :                    break;
-           // case NG_MINS   : send_string("=" ); break;
-
             case NG_Q   : send_string("la"); break;
             case NG_W   : send_string("e" ); break;
             case NG_E   : send_string("ri"); break;
@@ -213,9 +186,6 @@ void nicola_om_type(void) {
             case NG_I   : send_string("gu"); break;
             case NG_O   : send_string("du"); break;
             case NG_P   : send_string("pi"); break;
-           // case NG_AT  :                    break;
-           // case NG_LBRC:                    break;
-
 
             case NG_A   : send_string("wo"); break;
             case NG_S   : send_string("a" ); break;
@@ -228,7 +198,6 @@ void nicola_om_type(void) {
             case NG_L   : send_string("po"); break;
             case NG_SCLN :                    break;
             case NG_COLN : tap_code(KC_BSPC); break;
-           // case NG_RBRC :                    break;
 
             case NG_Z   : send_string("lu"); break;
             case NG_X   : send_string("-" ); break;
@@ -243,18 +212,6 @@ void nicola_om_type(void) {
         }
     } else if(nicola_o_key == NG_SHFTR) {
         switch(nicola_m_key) {
-           // case NG_1   : send_string("!" ); break;
-           // case NG_2   : tap_code(KC_INT1); break; // バックスラッシュ
-           // case NG_3   : send_string("#" ); break;
-           // case NG_4   : send_string("$" ); break;
-           // case NG_5   : send_string("%" ); break;
-           // case NG_6   : tap_code(KC_RBRC); break; // [
-           // case NG_7   : tap_code(KC_NUHS); break; // ]
-           // case NG_8   : tap_code16(S(KC_8)); break; // (
-           // case NG_9   : tap_code16(S(KC_9)); break; // )
-           // case NG_0   : tap_code16(S(KC_RBRC)); break; // [
-           // case NG_MINS   : tap_code16(S(KC_NUHS)); break;  // ]
-
             case NG_Q   : send_string("!" ); break;
             case NG_W   : send_string("ga"); break;
             case NG_E   : send_string("da"); break;
@@ -267,8 +224,6 @@ void nicola_om_type(void) {
             case NG_I   : send_string("ru"); break;
             case NG_O   : send_string("ma"); break;
             case NG_P   : send_string("le"); break;
-           // case NG_AT  : send_string("_" ); break;
-           // case NG_LBRC : send_string("{" ); break;
 
             case NG_A   : send_string("vu"); break;
             case NG_S   : send_string("zi"); break;
@@ -281,7 +236,6 @@ void nicola_om_type(void) {
             case NG_L   : send_string("lyo");break;
             case NG_SCLN : send_string("ltu");break;
             case NG_COLN : tap_code16(S(KC_RBRC)); break;
-           // case NG_RBRC : tap_code16(S(KC_NUHS)); break;
 
             case NG_Z   : tap_code16(S(KC_EQL)); break; // ~
             case NG_X   : send_string("bi"); break;
