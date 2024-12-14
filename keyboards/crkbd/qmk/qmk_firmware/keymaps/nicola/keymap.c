@@ -38,10 +38,10 @@ enum custom_keycodes
 #define XXXXX KC_NO
 #define KC_RESET RESET
 #define KC_RST RESET
-#define KC_ALTDN RALT(KC_DOWN)
+#define KC_ALTDN ALT_T(KC_DOWN)
 #define KC_CTLTB CTL_T(KC_TAB)
 #define KC_GUIUP GUI_T(KC_UP)
-#define KC_SFMN SFT_T(KC_MINS)
+#define KC_SFMN SFT_T(KC_INT1)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT_split_3x6_3_ex2(
@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // デフォルトレイヤーに関係なくQWERTYで
   [_NICOLA] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-        _____,    NG_Q,    NG_W,    NG_E,    NG_R,    NG_T,   NG_LU,      NG_RU,    NG_Y,    NG_U,    NG_I,    NG_O,    NG_P,  KC_DEL,
+        _____,    NG_Q,    NG_W,    NG_E,    NG_R,    NG_T,   NG_LU,      NG_RU,    NG_Y,    NG_U,    NG_I,    NG_O,    NG_P, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
         _____,    NG_A,    NG_S,    NG_D,    NG_F,    NG_G,   _____,      _____,    NG_H,    NG_J,    NG_K,    NG_L, NG_SCLN, NG_COLN,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|

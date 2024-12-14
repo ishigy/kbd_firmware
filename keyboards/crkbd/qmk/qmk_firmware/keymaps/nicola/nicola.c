@@ -107,10 +107,6 @@ void nicola_mode(uint16_t keycode, keyrecord_t *record) {
     case KC_RSFT:
     case KC_RALT:
     case KC_RGUI:
-    case KC_CTLTB:
-  //  case KC_SFMN:
-    case KC_GUIUP:
-    case KC_ALTDN:
       if (record->event.pressed) {
         n_modifier++;
         layer_off(nicola_layer);
@@ -168,7 +164,7 @@ void nicola_m_type(void) {
         case NG_COLN : tap_code(KC_BSPC); break;
        // case NG_RBRC : tap_code(KC_NUHS); break; // ]
 
-        case NG_Z   : send_string("!" ); break;
+        case NG_Z   : tap_code16(KC_EXLM); break; // 
         case NG_X   : send_string("hi"); break;
         case NG_C   : send_string("su"); break;
         case NG_V   : send_string("hu"); break;
@@ -177,7 +173,7 @@ void nicola_m_type(void) {
         case NG_M   : send_string("so"); break;
         case NG_COMM: send_string("ne"); break;
         case NG_DOT : send_string("ho"); break;
-        case NG_SLSH: send_string("?" ); break;
+        case NG_SLSH: tap_code16(KC_QUES); break; // 
     }
 }
 
