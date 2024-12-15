@@ -93,6 +93,22 @@ void nicola_clear(void) {
   key_process_guard = 0;
 }
 
+// `n_modifier`の値を取得する関数
+uint8_t get_n_modifier(void) {
+    return n_modifier;
+}
+
+// `n_modifier`の値を設定する関数
+void set_n_modifier(uint8_t value) {
+    n_modifier = value;
+    if (n_modifier != 0) {
+        layer_off(nicola_layer);
+      } else {
+        layer_on(nicola_layer);
+     }
+}
+
+
 // 入力モードか編集モードかを確認する
 void nicola_mode(uint16_t keycode, keyrecord_t *record) {
   if (!is_nicola) return;
@@ -217,7 +233,7 @@ void nicola_om_type(void) {
             case NG_E   : send_string("da"); break;
             case NG_R   : send_string("go"); break;
             case NG_T   : send_string("za"); break;
-            case NG_LU  : tap_code16(S(KC_QUOT)); break; // "
+            case NG_LU  : tap_code16(S(KC_2)); break; // "
             case NG_RU  : tap_code16(S(KC_9)); break; // )
             case NG_Y   : send_string("yo"); break;
             case NG_U   : send_string("ni"); break;

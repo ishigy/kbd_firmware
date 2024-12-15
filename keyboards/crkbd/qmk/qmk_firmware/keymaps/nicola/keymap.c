@@ -35,6 +35,7 @@ enum custom_keycodes
 // レイヤーキータップ、長押し判定
 static bool lower_pressed = false;
 static bool raise_pressed = false;
+static bool ctrl_pressed = false;
 
 #define KC______ KC_TRNS
 #define KC_XXXXX KC_NO
@@ -43,16 +44,20 @@ static bool raise_pressed = false;
 #define KC_RESET RESET
 #define KC_RST RESET
 #define KC_ALTDN ALT_T(KC_DOWN)
-#define KC_CTLTB CTL_T(KC_TAB)
+// #define KC_CTLTB CTL_T(KC_TAB)
 #define KC_GUIUP GUI_T(KC_UP)
 #define KC_SFMN SFT_T(KC_INT1)
+
+#define KC_C(A) C(KC_##A)
+#define KC_S(A) S(KC_##A)
+#define KC_G(A) G(KC_##A)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-       KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T, KC_LPRN,    KC_RPRN,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
+       KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T, KC_S(8),    KC_S(9),    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-     KC_CTLTB,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_LEFT,   KC_RIGHT,    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
+      KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_LEFT,   KC_RIGHT,    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_SFMN,
   //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
@@ -81,9 +86,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LOWER] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-        _____,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5, KC_LPRN,    KC_RPRN,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_BSPC,
+        _____,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5, KC_S(8),    KC_S(9),    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-        _____,    KC_4,    KC_5,    KC_6,KC_MACRO,   KC_UP,   _____,      _____,   KC_AT,    KC_4,    KC_5,    KC_6, KC_ASTR, KC_PLUS,
+        _____,    KC_4,    KC_5,    KC_6,KC_MACRO,   KC_UP,   _____,      _____,   KC_AT,    KC_4,    KC_5,    KC_6,KC_S(QUOT),KC_S(SCLN),
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
         _____,    KC_7,    KC_8,    KC_9,    KC_0, KC_DOWN,                         KC_0,    KC_1,    KC_2,    KC_3, KC_SLSH, KC_MINS,
 
@@ -94,11 +99,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_RAISE] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-        _____, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC, KC_LCTL,    KC_RCTL, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC, // この行はこれでよい。
+        _____, KC_EXLM, KC_LBRC, KC_HASH,  KC_DLR, KC_PERC, KC_S(2),    KC_S(7),  KC_EQL, KC_AMPR,KC_S(QUOT),KC_S(8),KC_S(9),  KC_DEL, // この行はこれでよい。
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-        _____, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LALT,    KC_RALT, KC_MINS,  KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS,  KC_GRV,
+        _____, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   KC_UP,   _____,      _____, KC_MINS,  KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS,  KC_GRV,
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
-        _____, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
+        _____, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DOWN,                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
   //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, _______,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
@@ -213,6 +218,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     return false;
     break;
 
+  case KC_LCTL:
+    if (record->event.pressed)
+    {
+      ctrl_pressed = true;
+      register_code(KC_LCTL);
+      uint8_t modifier = get_n_modifier(); // `n_modifier`の値を取得
+      set_n_modifier(modifier + 1);        // `n_modifier`を更新
+    }
+    else
+    {
+      unregister_code(KC_LCTL);
+      uint8_t modifier = get_n_modifier(); // `n_modifier`の値を取得
+      set_n_modifier(modifier - 1);        // `n_modifier`を更新
+      if (ctrl_pressed)
+      {
+        register_code(KC_TAB);
+        unregister_code(KC_TAB);
+      }
+      ctrl_pressed = false;
+    }
+    return false;
+    break;
+
   case KC_MACRO:
     if (record->event.pressed)
     {
@@ -229,6 +257,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
       // reset the flag
       lower_pressed = false;
       raise_pressed = false;
+      ctrl_pressed = false;
     }
     break;
   }
