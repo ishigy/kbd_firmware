@@ -101,9 +101,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
         _____, KC_EXLM, KC_LBRC, KC_HASH,  KC_DLR, KC_PERC, KC_S(2),    KC_S(7),  KC_EQL, KC_AMPR,KC_S(QUOT),KC_S(8),KC_S(9),  KC_DEL, // この行はこれでよい。
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-        _____, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   KC_UP,   _____,      _____, KC_MINS,  KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS,  KC_GRV,
+        _____, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   KC_UP,   _____,      _____, KC_MINS,  KC_EQL, KC_INT1, KC_RBRC, KC_BSLS,  KC_GRV,
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
-        _____, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DOWN,                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
+        _____, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DOWN,                      KC_UNDS, KC_PLUS,KC_S(INI3),KC_RCBR,KC_PIPE, KC_TILD,
   //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, _______,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
