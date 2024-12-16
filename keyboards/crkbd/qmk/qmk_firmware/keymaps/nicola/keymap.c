@@ -37,6 +37,7 @@ static bool lower_pressed = false;
 static bool raise_pressed = false;
 static bool ctrl_pressed = false;
 static bool rsft_pressed = false;
+static uint8_t n_modifier = 0; // 押しているmodifierキーの数
 
 #define KC______ KC_TRNS
 #define KC_XXXXX KC_NO
@@ -224,13 +225,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     {
       ctrl_pressed = true;
       register_code(KC_LCTL);
-      uint8_t modifier = get_n_modifier(); // `n_modifier`の値を取得
+      modifier = get_n_modifier(); // `n_modifier`の値を取得
       set_n_modifier(modifier + 1);        // `n_modifier`を更新
     }
     else
     {
       unregister_code(KC_LCTL);
-      uint8_t modifier = get_n_modifier(); // `n_modifier`の値を取得
+      modifier = get_n_modifier(); // `n_modifier`の値を取得
       set_n_modifier(modifier - 1);        // `n_modifier`を更新
       if (ctrl_pressed)
       {
@@ -247,13 +248,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     {
       rsft_pressed = true;
       register_code(KC_RSFT);
-      uint8_t modifier = get_n_modifier(); // `n_modifier`の値を取得
+      modifier = get_n_modifier(); // `n_modifier`の値を取得
       set_n_modifier(modifier + 1);        // `n_modifier`を更新
     }
     else
     {
       unregister_code(KC_RSFT);
-      uint8_t modifier = get_n_modifier(); // `n_modifier`の値を取得
+      modifier = get_n_modifier(); // `n_modifier`の値を取得
       set_n_modifier(modifier - 1);        // `n_modifier`を更新
       if (rsft_pressed)
       {
