@@ -46,7 +46,7 @@ static bool ctrl_pressed = false;
 #define KC_ALTDN ALT_T(KC_DOWN)
 // #define KC_CTLTB CTL_T(KC_TAB)
 #define KC_GUIUP GUI_T(KC_UP)
-#define KC_SFMN SFT_T(KC_INT1)
+// #define KC_SFMN SFT_T(KC_INT1)
 
 #define KC_C(A) C(KC_##A)
 #define KC_S(A) S(KC_##A)
@@ -240,7 +240,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     }
     return false;
     break;
+ 
+  case KC_RSFT:
+    if (record->event.pressed)
+    {
+      ctrl_pressed = true;
+      register_code(KC_LCTL);
+      uint8_t modifier = get_n_modifier(); // `n_modifier`の値を取得
+      set_n_modifier(modifier + 1);        // `n_modifier`を更新
+    }
+    else
+    {
+      unregister_code(KC_LCTL);
+      uint8_t modifier = get_n_modifier(); // `n_modifier`の値を取得
+      set_n_modifier(modifier - 1);        // `n_modifier`を更新
+      if (ctrl_pressed)
+      {
+        register_code(KC_TAB);
+        unregister_code(KC_TAB);
+      }
+      ctrl_pressed = false;
+    }
+    return false;
+    break;
 
+    
+    
   case KC_MACRO:
     if (record->event.pressed)
     {
