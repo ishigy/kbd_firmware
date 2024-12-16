@@ -36,6 +36,7 @@ enum custom_keycodes
 static bool lower_pressed = false;
 static bool raise_pressed = false;
 static bool ctrl_pressed = false;
+static bool rsft_pressed = false;
 
 #define KC______ KC_TRNS
 #define KC_XXXXX KC_NO
@@ -244,22 +245,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
   case KC_RSFT:
     if (record->event.pressed)
     {
-      ctrl_pressed = true;
-      register_code(KC_LCTL);
+      rsft_pressed = true;
+      register_code(KC_RSFT);
       uint8_t modifier = get_n_modifier(); // `n_modifier`の値を取得
       set_n_modifier(modifier + 1);        // `n_modifier`を更新
     }
     else
     {
-      unregister_code(KC_LCTL);
+      unregister_code(KC_RSFT);
       uint8_t modifier = get_n_modifier(); // `n_modifier`の値を取得
       set_n_modifier(modifier - 1);        // `n_modifier`を更新
-      if (ctrl_pressed)
+      if (rsft_pressed)
       {
-        register_code(KC_TAB);
-        unregister_code(KC_TAB);
+        register_code(KC_INT1);
+        unregister_code(KC_INT1);
       }
-      ctrl_pressed = false;
+      rsft_pressed = false;
     }
     return false;
     break;
@@ -283,6 +284,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
       lower_pressed = false;
       raise_pressed = false;
       ctrl_pressed = false;
+      rsft_pressed = false;
     }
     break;
   }
