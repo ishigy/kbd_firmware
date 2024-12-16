@@ -115,7 +115,7 @@ void nicola_mode(uint16_t keycode, keyrecord_t *record) {
 
   // modifierが押されたらレイヤーをオフ
   switch (keycode) {
-    case KC_LCTL:
+  //  case KC_LCTL:
     case KC_LSFT:
     case KC_LALT:
     case KC_LGUI:
