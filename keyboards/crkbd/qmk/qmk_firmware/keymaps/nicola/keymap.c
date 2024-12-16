@@ -37,7 +37,7 @@ static bool lower_pressed = false;
 static bool raise_pressed = false;
 static bool ctrl_pressed = false;
 static bool rsft_pressed = false;
-static uint8_t n_modifier = 0; // 押しているmodifierキーの数
+static uint8_t modifier = 0; // 押しているmodifierキーの数
 
 #define KC______ KC_TRNS
 #define KC_XXXXX KC_NO
@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
         _____, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   KC_UP,   _____,      _____, KC_MINS,  KC_EQL, KC_INT1, KC_RBRC, KC_BSLS,KC_S(LBRC),
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
-        _____, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DOWN,                      KC_UNDS, KC_PLUS,KC_S(INI3),KC_RCBR,KC_PIPE,KC_S(EQL),
+        _____, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DOWN,                      KC_UNDS, KC_PLUS,KC_S(INT3),KC_RCBR,KC_PIPE,KC_S(EQL),
   //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, _______,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
