@@ -102,10 +102,10 @@ uint8_t get_n_modifier(void) {
 void set_n_modifier(uint8_t value) {
   if (!is_nicola) return;
     n_modifier = value;
-    if (n_modifier != 0) {
-        layer_off(nicola_layer);
-      } else {
+    if (n_modifier == 0) {
         layer_on(nicola_layer);
+      } else {
+        layer_off(nicola_layer);
      }
 }
 
