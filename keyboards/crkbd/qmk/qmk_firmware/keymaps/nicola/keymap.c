@@ -221,18 +221,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     {
       ctrl_pressed = true;
       register_code(KC_LCTL);
-      if(nicola_state()){
-        modifier = get_n_modifier(); // `n_modifier`の値を取得
-        set_n_modifier(modifier + 1);        // `n_modifier`を更新
-      }
+      set_n_modifier(1);        // n_modifierを更新
     }
     else
     {
       unregister_code(KC_LCTL);
-      if(nicola_state()){
-        modifier = get_n_modifier(); // `n_modifier`の値を取得
-        set_n_modifier(modifier - 1);        // `n_modifier`を更新
-      }
+      set_n_modifier(0);        // n_modifierを更新
       if (ctrl_pressed)
       {
         register_code(KC_TAB);
@@ -248,18 +242,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     {
       rsft_pressed = true;
       register_code(KC_RSFT);
-      if(nicola_state()){
-        modifier = get_n_modifier(); // `n_modifier`の値を取得
-        set_n_modifier(modifier + 1);        // `n_modifier`を更新
-      }
+      set_n_modifier(1);        // n_modifierを更新
     }
     else
     {
       unregister_code(KC_RSFT);
-      if(nicola_state()){
-        modifier = get_n_modifier(); // `n_modifier`の値を取得
-        set_n_modifier(modifier - 1);        // `n_modifier`を更新
-      }
+      set_n_modifier(0);        // n_modifierを更新
       if (rsft_pressed)
       {
         register_code(KC_INT1);
