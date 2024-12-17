@@ -96,13 +96,17 @@ uint8_t get_n_modifier(void) {
     return n_modifier;
 }
 
-// 外部からn_modifierの値を設定する関数
+// 外部からn_modifierの値を増減させる関数
 void set_n_modifier(uint8_t value) {
-    n_modifier = value;
-    if (n_modifier == 0) {
-        layer_on(nicola_layer);
-      } else {
+  if (!is_nicola) return;
+    if(value){
+        n_modifier++;
         layer_off(nicola_layer);
+      } else {
+        n_modifier--;
+        if (n_modifier == 0) {
+          layer_on(nicola_layer);
+        }
      }
 }
 
