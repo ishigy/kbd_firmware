@@ -98,7 +98,6 @@ uint8_t get_n_modifier(void) {
 
 // 外部からn_modifierの値を設定する関数
 void set_n_modifier(uint8_t value) {
-  if (!is_nicola) return;
     n_modifier = value;
     if (n_modifier == 0) {
         layer_on(nicola_layer);
