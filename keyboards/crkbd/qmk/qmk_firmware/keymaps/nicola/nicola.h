@@ -26,8 +26,7 @@ bool nicola_state(void);
 bool process_nicola(uint16_t, keyrecord_t *);
 void set_nicola(uint8_t);
 
-// `n_modifier`を操作するための関数プロトタイプ
-uint8_t get_n_modifier(void);
+// n_modifierを操作するための関数プロトタイプ
 void set_n_modifier(uint8_t value);
 
 typedef enum nicola_keycodes {
