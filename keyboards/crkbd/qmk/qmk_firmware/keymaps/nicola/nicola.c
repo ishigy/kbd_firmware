@@ -68,7 +68,6 @@ void nicola_on(void) {
   is_nicola = true;
   nicola_clear();
   layer_on(nicola_layer);
-
   tap_code(KC_LNG1); // Mac
   tap_code(KC_INT4); // Win
 }
@@ -77,7 +76,6 @@ void nicola_off(void) {
   is_nicola = false;
   nicola_clear();
   layer_off(nicola_layer);
-
   tap_code(KC_LNG2); // Mac
   tap_code(KC_INT5); // Win
 }
@@ -93,12 +91,12 @@ void nicola_clear(void) {
   key_process_guard = 0;
 }
 
-// `n_modifier`の値を取得する関数
+// 外部からn_modifierの値を取得する関数
 uint8_t get_n_modifier(void) {
     return n_modifier;
 }
 
-// `n_modifier`の値を設定する関数
+// 外部からn_modifierの値を設定する関数
 void set_n_modifier(uint8_t value) {
   if (!is_nicola) return;
     n_modifier = value;
