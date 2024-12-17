@@ -211,7 +211,7 @@ void nicola_om_type(void) {
             case NG_J   : send_string("do"); break;
             case NG_K   : send_string("gi"); break;
             case NG_L   : send_string("po"); break;
-            case NG_SCLN :                    break;
+            case NG_SCLN : tap_code16(S(KC_EQL)); break; // ～
             case NG_COLN : tap_code(KC_BSPC); break;
 
             case NG_Z   : send_string("lu"); break;
