@@ -91,11 +91,6 @@ void nicola_clear(void) {
   key_process_guard = 0;
 }
 
-// 外部からn_modifierの値を取得する関数
-uint8_t get_n_modifier(void) {
-    return n_modifier;
-}
-
 // 外部からn_modifierの値を増減させる関数
 void set_n_modifier(uint8_t value) {
   if (!is_nicola) return;
