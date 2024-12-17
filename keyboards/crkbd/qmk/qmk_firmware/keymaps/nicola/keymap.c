@@ -29,7 +29,6 @@ enum custom_keycodes
   KC_ADJUST,
   KC_KANA2,
   KC_MACRO,
-//  RGBRST,
 };
 
 // レイヤーキータップ、長押し判定
@@ -37,7 +36,9 @@ static bool lower_pressed = false;
 static bool raise_pressed = false;
 static bool ctrl_pressed = false;
 static bool rsft_pressed = false;
-static uint8_t modifier = 0; // 押しているmodifierキーの数
+
+// 押しているmodifierキーの数
+static uint8_t modifier = 0; 
 
 #define KC______ KC_TRNS
 #define KC_XXXXX KC_NO
@@ -46,9 +47,7 @@ static uint8_t modifier = 0; // 押しているmodifierキーの数
 #define KC_RESET RESET
 #define KC_RST RESET
 #define KC_ALTDN ALT_T(KC_DOWN)
-// #define KC_CTLTB CTL_T(KC_TAB)
 #define KC_GUIUP GUI_T(KC_UP)
-// #define KC_SFMN SFT_T(KC_INT1)
 
 #define KC_C(A) C(KC_##A)
 #define KC_S(A) S(KC_##A)
@@ -72,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // デフォルトレイヤーに関係なくQWERTYで
   [_NICOLA] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-        _____,    NG_Q,    NG_W,    NG_E,    NG_R,    NG_T,   NG_LU,      NG_RU,    NG_Y,    NG_U,    NG_I,    NG_O,    NG_P, KC_BSPC,
+        _____,    NG_Q,    NG_W,    NG_E,    NG_R,    NG_T,   NG_LU,      NG_RU,    NG_Y,    NG_U,    NG_I,    NG_O,    NG_P,   _____,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
         _____,    NG_A,    NG_S,    NG_D,    NG_F,    NG_G,   _____,      _____,    NG_H,    NG_J,    NG_K,    NG_L, NG_SCLN, NG_COLN,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -83,14 +82,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 // NICOLA親指シフト
 
-
-
-
   [_LOWER] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-        _____,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5, KC_S(8),    KC_S(9),    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_BSPC,
+        _____,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5, KC_S(8),    KC_S(9),    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   _____,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-        _____,    KC_4,    KC_5,    KC_6,KC_MACRO,   KC_UP,   _____,      _____, KC_LBRC,    KC_4,    KC_5,    KC_6,KC_S(QUOT),KC_S(SCLN),
+        _____,    KC_4,    KC_5,    KC_6,KC_MACRO,   KC_UP,   _____,      _____,  KC_TAB,    KC_4,    KC_5,    KC_6,KC_S(QUOT),KC_S(SCLN),
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
         _____,    KC_7,    KC_8,    KC_9,    KC_0, KC_DOWN,                         KC_0,    KC_1,    KC_2,    KC_3, KC_SLSH, KC_MINS,
 
@@ -101,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_RAISE] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-        _____, KC_EXLM, KC_LBRC, KC_HASH,  KC_DLR, KC_PERC, KC_S(2),    KC_S(7),  KC_EQL, KC_AMPR,KC_S(QUOT),KC_S(8),KC_S(9),  KC_DEL, // この行はこれでよい。
+        _____, KC_EXLM, KC_LBRC, KC_HASH,  KC_DLR, KC_PERC, KC_S(2),    KC_S(7),  KC_EQL, KC_AMPR,KC_S(QUOT),KC_S(8),KC_S(9),  KC_DEL, 
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
         _____, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   KC_UP,   _____,      _____, KC_MINS,  KC_EQL, KC_INT1, KC_RBRC, KC_BSLS,KC_S(LBRC),
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
@@ -146,7 +142,6 @@ void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3)
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record)
 {
-
   switch (keycode)
   {
   case KC_EISU:
@@ -158,6 +153,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     }
     return false;
     break;
+    
   case KC_KANA2:
     if (record->event.pressed)
     {
@@ -266,8 +262,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     return false;
     break;
 
-    
-    
   case KC_MACRO:
     if (record->event.pressed)
     {
