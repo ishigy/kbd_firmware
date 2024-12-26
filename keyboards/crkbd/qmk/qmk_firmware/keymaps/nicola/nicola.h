@@ -84,6 +84,8 @@ typedef enum nicola_keycodes {
   NG_DOT,
   NG_SLSH,
 
+  NG_mod,
+
   NG_M_BOTTOM = NG_SLSH,
 
   NG_SHFTL,
